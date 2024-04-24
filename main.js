@@ -29,7 +29,7 @@ async function fetching(city = "", country = "", language) {
   }
 }
 
-async function getCountrys(code) {
+async function getCountries(code) {
   let data = await $.getJSON(
     document.documentElement.lang === "es" ? "paises.json" : "countries.json"
   );
@@ -160,6 +160,7 @@ async function main(city, country) {
   let fetchedData = await fetching(city, country, lang);
   console.log(fetchedData);
 
+  //$("#cityName").html(fetchedData.name)
   document.getElementById("cityName").innerHTML = fetchedData.name
 
   rawIconName = fetchedData.weather[0].icon;
@@ -168,33 +169,37 @@ async function main(city, country) {
     .getElementById("weatherIcon")
     .setAttribute("src", `weather-icons/${iconName}d.png`);
 
-  $("#countryName").html(await getCountrys(
+  //$("#countryName").html(await getCountries(
+  document.getElementById("countryName").innerHTML = await getCountries(
     fetchedData.sys.country
   )
-  )
+  
 
-  $("#tempNumber").html(
-    fetchedData.main.temp + " ºC"
-  );
+  // $("#tempNumber").html(
+  //   fetchedData.main.temp + " ºC"
+  // );
+  document.getElementById("tempNumber").innerHTML = fetchedData.main.temp + " ºC";
 
-  $("#weatherDesc").html(
-    fetchedData.weather[0].description
-  );
+  // $("#weatherDesc").html(
+  //   fetchedData.weather[0].description
+  // );
+  document.getElementById("weatherDesc").innerHTML = fetchedData.weather[0].description;
 
-  $("#maxMinTemp").html(
-    fetchedData.main.temp_min + "º / " + fetchedData.main.temp_max + "º"
-  );
+  // $("#maxMinTemp").html(
+  //  fetchedData.main.temp_min + "º / " + fetchedData.main.temp_max + "º"
+  // );
+  document.getElementById("maxMinTemp").textContent = fetchedData.main.temp_min + "º / " + fetchedData.main.temp_max + "º"
 
   let arrowDeg = -45 + fetchedData.wind.deg;
 
-  $("#windArrow").css("rotate", `${arrowDeg}deg`);
+  // $("#windArrow").css("rotate", `${arrowDeg}deg`);
+  document.getElementById("windArrow").style.rotate = `${arrowDeg}deg`;
 
-  $("#windSpeed").html(fetchedData.wind.speed + "m/s");
+  // $("#windSpeed").html(fetchedData.wind.speed + "m/s");
+  document.getElementById("windSpeed").innerHTML = `${fetchedData.wind.speed} m/s`;
 
   let weatherMain = fetchedData.weather[0].main;
   weatherDesign(weatherMain);
-
-  $(".hide").hide();
 }
 
 async function log(data) {

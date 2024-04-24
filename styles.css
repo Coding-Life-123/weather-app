@@ -66,8 +66,13 @@ body {
   margin-left: 10px;
   margin-right: 2px;
   outline: none;
-  color: #fff;
+  color: var(--textColor);
   font-size: 15px;
+}
+
+.search-input::placeholder{
+  color: var(--textColor);
+  font-weight: 600;
 }
 
 .search-button {
