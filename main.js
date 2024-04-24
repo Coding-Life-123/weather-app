@@ -160,7 +160,7 @@ async function main(city, country) {
   let fetchedData = await fetching(city, country, lang);
   console.log(fetchedData);
 
-  $("#cityName").html(fetchedData.name)
+  document.getElementById("cityName").innerHTML(fetchedData.name)
 
   rawIconName = fetchedData.weather[0].icon;
   iconName = JSON.stringify(rawIconName).slice(1, 3);
