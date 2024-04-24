@@ -43,9 +43,10 @@ async function getCountryCode(name) {
     const nameLowerCase = name.toLowerCase().trim();
     console.log(nameLowerCase);
 
-    const data = await fetch(
+    const data = await $.getJSON(
       document.documentElement.lang === "es" ? "paises.json" : "countries.json"
     );
+
 
     for (const code in data) {
       if (Object.prototype.hasOwnProperty.call(data, code)) {
@@ -161,8 +162,8 @@ async function main(city, country) {
   let fetchedData = await fetching(city, country, lang);
   console.log(fetchedData);
 
-  //$("#cityName").html(fetchedData.name)
-  document.getElementById("cityName").innerHTML = fetchedData.name
+  $("#cityName").html(fetchedData.name)
+  //document.getElementById("cityName").innerHTML = fetchedData.name
 
   rawIconName = fetchedData.weather[0].icon;
   iconName = JSON.stringify(rawIconName).slice(1, 3);
