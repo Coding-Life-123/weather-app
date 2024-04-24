@@ -31,7 +31,7 @@ async function fetching(city = "", country = "", language) {
 }
 
 async function getCountries(code) {
-  let data = await $.getJSON(
+  let data = await fetch(
     document.documentElement.lang === "es" ? "paises.json" : "countries.json"
   );
   let countryName = data[code];
@@ -43,7 +43,7 @@ async function getCountryCode(name) {
     const nameLowerCase = name.toLowerCase().trim();
     console.log(nameLowerCase);
 
-    const data = await $.getJSON(
+    const data = await fetch(
       document.documentElement.lang === "es" ? "paises.json" : "countries.json"
     );
 
