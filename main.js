@@ -1,7 +1,5 @@
 let KEY = "e7cb0a3b193d4dd73fb325a5e190a939";
 
-console.log(document.documentElement.lang);
-
 function switchLang() {
   if (document.documentElement.lang == "es") {
     document.documentElement.setAttribute("lang", "en");
@@ -31,7 +29,7 @@ async function fetching(city = "", country = "", language) {
 }
 
 async function getCountries(code) {
-  let data = await fetch(
+  let data = await $.getJSON(
     document.documentElement.lang === "es" ? "paises.json" : "countries.json"
   );
   let countryName = data[code];
