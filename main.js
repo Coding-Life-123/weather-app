@@ -9,6 +9,7 @@ function switchLang() {
     document.documentElement.setAttribute("lang", "es");
   }
 
+  document.getElementById("searchInput").placeholder = (document.documentElement.lang == 'en') ? "Ex: City, Country" : "Ej: Ciudad, País"
   console.log(document.documentElement.lang);
 
   let storedCityName = localStorage.getItem("lastCity");
@@ -173,7 +174,6 @@ async function main(city, country) {
   document.getElementById("countryName").innerHTML = await getCountries(
     fetchedData.sys.country
   )
-  
 
   // $("#tempNumber").html(
   //   fetchedData.main.temp + " ºC"
