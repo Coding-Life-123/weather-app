@@ -214,4 +214,4 @@ async function log(data) {
   main(city, codigoISO);
 }
 
-main();
+main("London","UK");
